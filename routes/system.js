@@ -4,8 +4,12 @@ export function system(app){
     app.post("/sign", async (req, res) => {
         const name = req.body.username;
         const password = req.body.password;
-        const data = await adduser(name, password)
-        res.redirect("/")
+        const data = await adduser(name, password);
+        if(data == 0) {
+          res.send("Error: An account with this name already exists");
+        } else {
+          res.redirect("/");
+        }
     })
     app.post("/log", async (req, res) => {
         const username = req.body.username;

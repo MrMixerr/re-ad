@@ -27,9 +27,13 @@ export async function selectuser(id){
 
 
 export async function adduser(name, pass){
-    const result = await pool.query("INSERT INTO `users` (name, pass) VALUES (?, ?)", 
-    [name, pass]);
-    return result
+    const users = await pool.query("SELECT * FROM `users` WHERE name=?", [name]);
+    if(users[0].length == 0) {
+        const result = await pool.query("INSERT INTO `users` (name, pass) VALUES (?, ?)", [name, pass]);
+        return 1;
+    } else {
+        return 0;
+    }
 } 
 export async function checkuser(name, pass){
     const [rows] = await pool.query("SELECT * FROM users WHERE name = ? AND pass = ?", 
