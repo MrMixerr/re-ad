@@ -4,7 +4,7 @@
         <a style="padding: 1em;" href="/login">log-in</a>
         <a style="padding: 1em;" href="/signin">sign-in</a>
     <% } else if (req.session.loggedin === true){ %>
-        <a style="padding: 1em;" href=""><%= req.session.username %></a>
+        <a style="padding: 1em;" href="/user/<%= req.session.userid %>"><%= req.session.username %></a>
         <a style="padding: 1em;" href="/community/create">make community</a>
         <a style="padding: 1em;" href="/logout">log-out</a>
     <!-- for some reason the code crashes out and loggiedin is still true -->

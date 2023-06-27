@@ -11,11 +11,8 @@
         <%- include("./modules/nav", { req: req })  %>
         <div>
             <div>
-                <% community.forEach(com => { %>
-                    <h1>Main Page Of <%= com.name %></h1> 
-                    <% creator_info.forEach(user => { %>
-                        <p>creator: <%= user.name %></p>
-                    <%}) %>
+                <% user.forEach(data => { %>
+                    <h1><%= data.name %></h1>
                 <% }); %>
             </div>        
         </div>

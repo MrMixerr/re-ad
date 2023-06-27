@@ -40,7 +40,7 @@ export async function getidbyusername(name){
     const [rows] = await pool.query("SELECT id FROM users WHERE name = ?", [name])
     return rows
 }
-export async function getuserprofile(){
-    const [result] = await pool.query("SELECT * FROM users");
+export async function getuserprofile(id){
+    const [result] = await pool.query("SELECT * FROM users WHERE id = ?", [id]);
     return result
 }

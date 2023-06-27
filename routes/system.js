@@ -1,4 +1,4 @@
-import {adduser, checkuser} from "../database.js"
+import {adduser, checkuser, getidbyusername} from "../database.js"
 export function system(app){
     
     app.post("/sign", async (req, res) => {
