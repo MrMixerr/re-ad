@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create A Community</title>
+</head>
+<body>
+    <div>
+        <div style="padding: 5em; padding-left: 20em;">
+            <form action="/create" method="post" class="form rounded">
+                <div style="padding: 1em;" class="mb-3">
+                    <label for="name" class="form-label">Name of the community</label>
+                    <input type="name" class="form-control" id="name" name="name">
+                </div>
+                <div style="padding: 1em;" class="mb-3">
+                    <label for="privacy" class="form-label">Is it public?</label>
+                    <input type="checkbox" name="privacy" id="privacy" value="1">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button><br>
+                <a href="/">Return Home</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
