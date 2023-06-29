@@ -48,3 +48,12 @@ export async function getuserprofile(id){
     const [result] = await pool.query("SELECT * FROM users WHERE id = ?", [id]);
     return result
 }
+export async function comunity_list(id){
+    const [result] = await pool.query("SELECT * FROM join_com WHERE user_id = ?", [id]);
+    return result
+}
+export async function comunity_list_name(id){
+    // to tired to figure this out today, will do it tommorow 
+    const [result] = await pool.query("SELECT communitys.name FROM communitys JOIN communitys ON communitys.id = communitys.creator_id WHERE communitys.id = ?", [id]);
+    return result
+}

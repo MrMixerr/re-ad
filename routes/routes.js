@@ -1,5 +1,5 @@
 import { system } from "./system.js"
-import { communitys, createcom, getidbyusername, selectedcoms, selectuser } from "../database.js"
+import { communitys, comunity_list, createcom, getidbyusername, getuserprofile, selectedcoms, selectuser } from "../database.js"
 export function routes(app){
     
     system(app)
@@ -41,8 +41,11 @@ export function routes(app){
         res.redirect("/")
     })
     app.get("/user/:id", async (req, res) => {
-        const communityData = await communitys();
-        res.render("home", { communitys: communityData, req });
+        const id = req.params.id;
+        const user_data = await getuserprofile(id) 
+        const list = await comunity_list(id)
+        console.log(list)
+        res.render("user_profile", {list ,user:user_data , req });
     })
 
 }

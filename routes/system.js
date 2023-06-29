@@ -22,6 +22,12 @@ export function system(app){
         else {
           req.session.username = username
           req.session.loggedin = true
+          for (const i of await getidbyusername(req.session.username)){            
+            req.session.userid = i.id
+            console.log(req.session.userid)
+          }
+
+
           res.redirect("/");
         }
     })
