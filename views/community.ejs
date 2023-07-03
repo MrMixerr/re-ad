@@ -16,6 +16,11 @@
                     <% creator_info.forEach(user => { %>
                         <p>creator: <%= user.name %></p>
                     <%}) %>
+                        <% if (req.session.loggedin === true) {%>
+                            <form action="/join-com/" method="post" class="form rounded">
+                                <button type="JOIN" class="btn btn-primary">JOIN</button>
+                            </form>
+                        <% } %>
                 <% }); %>
             </div>        
         </div>

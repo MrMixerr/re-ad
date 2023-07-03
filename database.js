@@ -34,7 +34,7 @@ export async function adduser(name, pass){
     } else {
         return 0;
     }
-} 
+}
 export async function checkuser(name, pass){
     const [rows] = await pool.query("SELECT * FROM users WHERE name = ? AND pass = ?", 
     [name, pass])
@@ -48,12 +48,17 @@ export async function getuserprofile(id){
     const [result] = await pool.query("SELECT * FROM users WHERE id = ?", [id]);
     return result
 }
-export async function comunity_list(id){
+export async function community_list(id){
     const [result] = await pool.query("SELECT * FROM join_com WHERE user_id = ?", [id]);
     return result
 }
-export async function comunity_list_name(id){
-    // to tired to figure this out today, will do it tommorow 
-    const [result] = await pool.query("SELECT communitys.name FROM communitys JOIN communitys ON communitys.id = communitys.creator_id WHERE communitys.id = ?", [id]);
+export async function community_list_name(id){
+    const [result] = await pool.query("SELECT communitys.name FROM communitys JOIN join_com ON communitys.id = join_com.com_id WHERE communitys.id = ?", [id]);
     return result
 }
+export async function join_com(user_id, com_id, status) {
+    const result = await pool.query("INSERT INTO `join_com` (user_id, com_id, status) VALUES (?, ?, ?)", [
+      user_id, com_id, status 
+    ]);
+    return result;
+  }
